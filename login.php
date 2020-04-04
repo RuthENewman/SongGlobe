@@ -25,6 +25,7 @@
                    id="login-password" 
                    name="login-password" 
                    type="password" 
+                   placeholder="Your password"
                    required >
             </p>
             <button type="submit" name="login-button">Log in</button>
@@ -62,7 +63,7 @@
                    required >
             </p>
             <p>
-                <label for="signup-email--confirm">Confirm your email address: </label>
+                <label for="signup-email--confirm">Confirm email address: </label>
                 <input 
                    id="signup-email--confirm" 
                    name="signup-email--confirm" 
@@ -76,14 +77,16 @@
                    id="signup-password" 
                    name="signup-password" 
                    type="password" 
+                   placeholder="Your password"
                    required >
             </p>
             <p>
-                <label for="signup-password--confirm">Confirm your password: </label>
+                <label for="signup-password--confirm">Confirm password: </label>
                 <input 
                    id="signup-password--confirm" 
                    name="signup-password--confirm" 
                    type="password" 
+                   placeholder="Your password"
                    required >
             </p>
             <button type="submit" name="signup-button">Sign up</button>
