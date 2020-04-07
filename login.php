@@ -11,6 +11,9 @@
         return ucfirst(strtolower($input));
     }
 
+    function sanitisePassword($password) {
+        return strip_tags($password);
+    }
 
     if (isset($_POST['login-button'])) {
         $email = $_POST['login-email'];
@@ -18,9 +21,11 @@
 
     if (isset($_POST['signup-button'])) {
        $email = sanitiseEmailAddress($_POST['signup-email']);
+       $emailConfirm == sanitiseEmailAddress($_POST['signup-email--confirm']);
        $firstName = sanitiseAndCapitalise($_POST['signup-firstname']);
        $lastName = sanitiseAndCapitalise($_POST['signup-firstname']);
-
+       $password = sanitisePassword($_POST['signup-password']);
+       $passwordConfirm = sanitisePassword($_POST['signup-password--confirm']);
     }
 ?>
 <!DOCTYPE html>
