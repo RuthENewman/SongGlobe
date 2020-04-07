@@ -1,32 +1,6 @@
 <?php 
-
-    function sanitiseEmailAddress($email) {
-        $email = strip_tags($email);
-        return str_replace(" ", "", $email); 
-    }
-
-    function sanitiseAndCapitalise($input) {
-        $input = strip_tags($input);
-        $input = str_replace(" ", "", $input);
-        return ucfirst(strtolower($input));
-    }
-
-    function sanitisePassword($password) {
-        return strip_tags($password);
-    }
-
-    if (isset($_POST['login-button'])) {
-        $email = $_POST['login-email'];
-    }
-
-    if (isset($_POST['signup-button'])) {
-       $email = sanitiseEmailAddress($_POST['signup-email']);
-       $emailConfirm == sanitiseEmailAddress($_POST['signup-email--confirm']);
-       $firstName = sanitiseAndCapitalise($_POST['signup-firstname']);
-       $lastName = sanitiseAndCapitalise($_POST['signup-firstname']);
-       $password = sanitisePassword($_POST['signup-password']);
-       $passwordConfirm = sanitisePassword($_POST['signup-password--confirm']);
-    }
+    include("Handlers/SignupHandler.php");
+    include("Handlers/LoginHandler.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +12,7 @@
 </head>
 <body>
     <div id="input-container">
-        <form action="login.php" 
+        <form action="signup.php" 
               method="POST" 
               id="login-form">
             <h2>Login</h2>
@@ -61,7 +35,7 @@
             <button type="submit" name="login-button">Log in</button>
         </form>
 
-        <form action="login.php" 
+        <form action="signup.php" 
               method="POST" 
               id="signup-form">
             <h2>Create an account</h2>
