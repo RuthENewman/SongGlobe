@@ -1,3 +1,28 @@
+<?php 
+
+    function sanitiseEmailAddress($email) {
+        $email = strip_tags($email);
+        return str_replace(" ", "", $email); 
+    }
+
+    function sanitiseAndCapitalise($input) {
+        $input = strip_tags($input);
+        $input = str_replace(" ", "", $input);
+        return ucfirst(strtolower($input));
+    }
+
+
+    if (isset($_POST['login-button'])) {
+        $email = $_POST['login-email'];
+    }
+
+    if (isset($_POST['signup-button'])) {
+       $email = sanitiseEmailAddress($_POST['signup-email']);
+       $firstName = sanitiseAndCapitalise($_POST['signup-firstname']);
+       $lastName = sanitiseAndCapitalise($_POST['signup-firstname']);
+
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +56,7 @@
             <button type="submit" name="login-button">Log in</button>
         </form>
 
-        <form action="signup.php" 
+        <form action="login.php" 
               method="POST" 
               id="signup-form">
             <h2>Create an account</h2>
