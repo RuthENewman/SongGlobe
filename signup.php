@@ -1,4 +1,9 @@
 <?php 
+    include("Models/Userlogin.php");
+
+    $userlogin = new Userlogin();
+    $userlogin->createUserlogin();
+
     include("Handlers/SignupHandler.php");
     include("Handlers/LoginHandler.php");
 ?>
