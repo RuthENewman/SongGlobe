@@ -23,7 +23,8 @@
         $password = sanitisePassword($_POST['signup-password']);
         $passwordConfirm = sanitisePassword($_POST['signup-password--confirm']);
         
-        $userlogin = new Userlogin();
+        $userlogin->createUserlogin($firstName, $lastName, $email, $emailConfirm, $password, $passwordConfirm);
+        
 
     }
 
