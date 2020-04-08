@@ -1,9 +1,9 @@
 <?php 
-    include("Models/Userlogin.php");
+    include("../Models/Userlogin.php");
     $userlogin = new Userlogin();
 
-    include("Handlers/SignupHandler.php");
-    include("Handlers/LoginHandler.php");
+    include("../Handlers/SignupHandler.php");
+    include("../Handlers/LoginHandler.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +44,7 @@
             <h2>Create an account</h2>
             <p>
                 <label for="signup-firstname">First name: </label>
+                <p class="error-message"><?php echo htmlspecialchars($userlogin->getError("First name provided cannot be greater than 35 characters.")); ?></p>
                 <input 
                    id="signup-firstname" 
                    name="signup-firstname" 
@@ -53,6 +54,7 @@
             </p>
             <p>
                 <label for="signup-lastname">Last name: </label>
+                <p class="error-message"><?php echo htmlspecialchars($userlogin->getError("Last name provided cannot be greater than 35 characters.")); ?></p>
                 <input 
                    id="signup-lastname" 
                    name="signup-lastname" 
@@ -62,6 +64,7 @@
             </p>
             <p>
                 <label for="signup-email">Email address: </label>
+                <p class="error-message"><?php echo htmlspecialchars($userlogin->getError("Email address is invalid.")); ?></p>
                 <input 
                    id="signup-email" 
                    name="signup-email" 
@@ -71,6 +74,7 @@
             </p>
             <p>
                 <label for="signup-email--confirm">Confirm email address: </label>
+                <p class="error-message"><?php echo htmlspecialchars($userlogin->getError("Confirmation email address does not match.")); ?></p>
                 <input 
                    id="signup-email--confirm" 
                    name="signup-email--confirm" 
@@ -80,6 +84,7 @@
             </p>
             <p>
                 <label for="signup-password">Password: </label>
+                <p class="error-message"><?php echo htmlspecialchars($userlogin->getError("Passwords must be between 8 and 60 characters in length.")); ?></p>
                 <input 
                    id="signup-password" 
                    name="signup-password" 
@@ -89,6 +94,7 @@
             </p>
             <p>
                 <label for="signup-password--confirm">Confirm password: </label>
+                <p class="error-message"><?php echo htmlspecialchars($userlogin->getError("Confirmation password does not match.")); ?></p>
                 <input 
                    id="signup-password--confirm" 
                    name="signup-password--confirm" 

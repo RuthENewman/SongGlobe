@@ -1,5 +1,7 @@
 <?php
 
+    // move functions to a services folder and Login / Signup Service of some sort?
+
     function sanitiseEmailAddress($email) {
         $email = strip_tags($email);
         return str_replace(" ", "", $email); 
@@ -17,14 +19,17 @@
 
     if (isset($_POST['signup-button'])) {
         $email = sanitiseEmailAddress($_POST['signup-email']);
-        $emailConfirm == sanitiseEmailAddress($_POST['signup-email--confirm']);
+        $emailConfirm = sanitiseEmailAddress($_POST['signup-email--confirm']);
         $firstName = sanitiseAndCapitalise($_POST['signup-firstname']);
         $lastName = sanitiseAndCapitalise($_POST['signup-firstname']);
         $password = sanitisePassword($_POST['signup-password']);
         $passwordConfirm = sanitisePassword($_POST['signup-password--confirm']);
         
-        $userlogin->createUserlogin($firstName, $lastName, $email, $emailConfirm, $password, $passwordConfirm);
-        
+        $createdUserlogin = $userlogin->createUserlogin($firstName, $lastName, $email, $emailConfirm, $password, $passwordConfirm);
+
+        if ($createdUserlogin) {
+            header("Location: index.php");
+        }
 
     }
 

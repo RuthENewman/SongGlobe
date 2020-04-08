@@ -26,39 +26,53 @@
             $this->validateLastName($lastName);
             $this->validateEmail($email, $emailConfirm);
             $this->validatePassword($password, $passwordConfirm);
+
+            if (empty($this->errorMessages)) {
+                // Insert into the database
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        /**
+         * Returns the error message
+         */
+        public function getError($error) {
+            if (!in_array($error, $this->errorMessages)) {
+                $error = "";
+            }
+            return $error;
         }
 
         /**
          * Validates first name provided
          * @param string $firstName 
-         * @return boolean
+         * @return
          */
         private function validateFirstName($firstName) {
             if (strlen($firstName) > 35) {
                 array_push($this->errorMessages, "First name provided cannot be greater than 35 characters.");
-                return false;
+                return;
             }
-            return true;
         }
     
         /**
          * Validates last name provided
          * @param string $lastName 
-         * @return boolean
+         * @return
          */
         private function validateLastName($lastName) {
             if (strlen($lastName) > 35) {
                 array_push($this->errorMessages, "Last name provided cannot be greater than 35 characters.");
-                return false;
             }
-            return true;
         }
     
         /**
          * Validates email and confirmation email provided match
          * @param string $email
          * @param string $emailConfirm
-         * @return boolean
+         * @return
          */
         private function validateEmail($email, $emailConfirm) {
             if ($email !== $emailConfirm) {
@@ -80,19 +94,14 @@
          * Validates password and confirmation password provided match
          * @param string $password
          * @param string $passwordConfirm
-         * @return boolean
+         * @return
          */
         private function validatePassword($password, $passwordConfirm) {
             if ($password !== $passwordConfirm) {
                 array_push($this->errorMessages, "Confirmation password does not match.");
-                return false;
             }
-
             if (strlen($password) < 8 || strlen($password > 60)) {
-                array_push($this->errorMessages, "Passwords must be between 8 and 60 characters in length");
-                return false;
+                array_push($this->errorMessages, "Passwords must be between 8 and 60 characters in length.");
             }
-
-            return true;
         }
     }
