@@ -5,6 +5,12 @@
 
     include("../Handlers/SignupHandler.php");
     include("../Handlers/LoginHandler.php");
+
+    function getFormValue($input) {
+        if (isset($_POST[$input])) {
+            echo htmlspecialchars($_POST[$input]);
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +30,7 @@
                 <input 
                    id="login-email" 
                    name="login-email" 
+                   value="<?php getFormValue('login-email'); ?>"
                    type="email" 
                    placeholder="Your email address" 
                    required ></p>
@@ -48,7 +55,8 @@
                 <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$firstNameLengthInvalid)); ?></p>
                 <input 
                    id="signup-firstname" 
-                   name="signup-firstname" 
+                   name="signup-firstname"
+                   value="<?php getFormValue('signup-firstname'); ?>"
                    type="text" 
                    placeholder="Your first name"
                    required >
@@ -59,6 +67,7 @@
                 <input 
                    id="signup-lastname" 
                    name="signup-lastname" 
+                   value="<?php getFormValue('signup-lastname'); ?>"
                    type="text"
                    placeholder="Your last name"
                    required >
@@ -69,6 +78,7 @@
                 <input 
                    id="signup-email" 
                    name="signup-email" 
+                   value="<?php getFormValue('signup-email'); ?>"
                    type="email" 
                    placeholder="Your email address" 
                    required >
@@ -78,7 +88,8 @@
                 <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailsDoNotMatch)); ?></p>
                 <input 
                    id="signup-email--confirm" 
-                   name="signup-email--confirm" 
+                   name="signup-email--confirm"
+                   value="<?php getFormValue('signup-email--confirm'); ?>" 
                    type="email" 
                    placeholder="Your email address" 
                    required >
