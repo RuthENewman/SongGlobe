@@ -52,7 +52,7 @@
          */
         private function validateFirstName($firstName) {
             if (strlen($firstName) > 35) {
-                array_push($this->errorMessages, "First name provided cannot be greater than 35 characters.");
+                array_push($this->errorMessages, Constants::$firstNameLengthInvalid);
                 return;
             }
         }
@@ -64,7 +64,7 @@
          */
         private function validateLastName($lastName) {
             if (strlen($lastName) > 35) {
-                array_push($this->errorMessages, "Last name provided cannot be greater than 35 characters.");
+                array_push($this->errorMessages, Constants::$lastNameLengthInvalid);
             }
         }
     
@@ -76,12 +76,12 @@
          */
         private function validateEmail($email, $emailConfirm) {
             if ($email !== $emailConfirm) {
-                array_push($this->errorMessages, "Confirmation email address does not match.");
+                array_push($this->errorMessages, Constants::$emailsDoNotMatch);
                 return false;
             }
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                array_push($this->errorMessages, "Email address is invalid.");
+                array_push($this->errorMessages, Constants::$emailInvalid);
                 return false;
             }
 
@@ -98,10 +98,10 @@
          */
         private function validatePassword($password, $passwordConfirm) {
             if ($password !== $passwordConfirm) {
-                array_push($this->errorMessages, "Confirmation password does not match.");
+                array_push($this->errorMessages, Constants::$passwordsDoNotMatch);
             }
             if (strlen($password) < 8 || strlen($password > 60)) {
-                array_push($this->errorMessages, "Passwords must be between 8 and 60 characters in length.");
+                array_push($this->errorMessages, Constants::$passwordLengthInvalid);
             }
         }
     }
