@@ -1,8 +1,9 @@
 <?php 
-    includes("../Models/Constants.php");
+    include("../config.php");
+    include("../Models/Constants.php");
     include("../Models/Userlogin.php");
-    $userlogin = new Userlogin();
 
+    $userlogin = new Userlogin();
     include("../Handlers/SignupHandler.php");
     include("../Handlers/LoginHandler.php");
 
