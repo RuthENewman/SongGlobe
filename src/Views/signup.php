@@ -3,7 +3,7 @@
     include("../Models/Constants.php");
     include("../Models/Userlogin.php");
 
-    $userlogin = new Userlogin();
+    $userlogin = new Userlogin($con);
     include("../Handlers/SignupHandler.php");
     include("../Handlers/LoginHandler.php");
 

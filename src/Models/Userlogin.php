@@ -3,11 +3,17 @@
     class Userlogin {
 
         /**
+         * @var object
+         */
+        private $conn;
+
+        /**
          * @var array
          */
         private $errorMessages;
 
-        public function __construct() {
+        public function __construct($con) {
+            $this->con = $con;
             $this->errorMessages = [];
         }
 
@@ -29,7 +35,7 @@
 
             if (empty($this->errorMessages)) {
                 // Insert into the database
-                return true;
+                return save($firstName, $lastName, $email, $password);
             } else {
                 return false;
             }
@@ -43,6 +49,22 @@
                 $error = "";
             }
             return $error;
+        }
+
+        /**
+         * Saves userlogin details in the database
+         * @param string $firstName
+         * @param string $lastName
+         * @param string $email
+         * @param string $password
+         */
+        public function save($firstName, $lastName, $email, $password) {
+            // TODO change to bcrypt
+            $passwordHash = md5($password);
+            $imageUrl = "assets/images/worldglobeamericascircle128.png";
+            $created = date("Y-m-d H:i:s");
+            
+            $result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$firstName', '$lastName', '$email', '$passwordHash', '$created', '$imageUrl')");
         }
 
         /**
