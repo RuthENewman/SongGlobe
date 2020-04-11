@@ -35,7 +35,7 @@
 
             if (empty($this->errorMessages)) {
                 // Insert into the database
-                return save($firstName, $lastName, $email, $password);
+                return $this->save($firstName, $lastName, $email, $password);
             } else {
                 return false;
             }
@@ -62,9 +62,9 @@
             // TODO change to bcrypt
             $passwordHash = md5($password);
             $imageUrl = "assets/images/worldglobeamericascircle128.png";
-            $created = date("Y-m-d H:i:s");
-            
-            $result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$firstName', '$lastName', '$email', '$passwordHash', '$created', '$imageUrl')");
+            $created = date("Y-m-d");
+            $result = mysqli_query($this->con, "INSERT INTO users (firstName, lastName, email, password, created, imageUrl) VALUES ('$firstName', '$lastName', '$email', '$passwordHash', '$created', '$imageUrl')");
+            return $result;
         }
 
         /**
@@ -122,7 +122,8 @@
             if ($password !== $passwordConfirm) {
                 array_push($this->errorMessages, Constants::$passwordsDoNotMatch);
             }
-            if (strlen($password) < 8 || strlen($password > 60)) {
+
+            if (strlen($password) < 8 || strlen($password) > 60) {
                 array_push($this->errorMessages, Constants::$passwordLengthInvalid);
             }
         }
