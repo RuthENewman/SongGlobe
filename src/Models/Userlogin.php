@@ -99,17 +99,21 @@
         private function validateEmail($email, $emailConfirm) {
             if ($email !== $emailConfirm) {
                 array_push($this->errorMessages, Constants::$emailsDoNotMatch);
-                return false;
+                return;
             }
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 array_push($this->errorMessages, Constants::$emailInvalid);
-                return false;
+                return;
             }
 
-            // TODO: Check email is not already in use
+            $user = mysqli_query($this->con, "SELECT * FROM users WHERE email='$email'");
 
-            return true;
+            if ($user != null) {
+                array_push($this->errorMessages, Constants::$emailAlreadyInUse);
+                return;
+            }
+
         }
     
         /**

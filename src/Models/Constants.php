@@ -28,6 +28,11 @@ class Constants {
              */
             public static $emailInvalid = "Email address is invalid.";
 
+             /**
+             * @var string
+             */
+            public static $emailAlreadyInUse = "An account with this email address already exists.";
+
         // Names
 
             /**

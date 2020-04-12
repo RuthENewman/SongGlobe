@@ -76,6 +76,7 @@
             <p>
                 <label for="signup-email">Email address: </label>
                 <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailInvalid)); ?></p>
+                <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailAlreadyInUse)); ?></p>
                 <input 
                    id="signup-email" 
                    name="signup-email" 
