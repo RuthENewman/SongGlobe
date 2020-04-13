@@ -5,6 +5,7 @@
         $password = $userloginService->sanitisePassword($_POST['login-password']);
 
         if ($userlogin->login($email, $password)) {
+            $_SESSION['userLoggedIn'] = $email;
             header("Location: index.php");
         }
     }

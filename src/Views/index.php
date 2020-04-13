@@ -1,3 +1,11 @@
+<?php 
+    include("../config.php");
+    if(isset($_SESSION['userLoggedIn'])) {
+        $loggedInUser = $_SESSION['userLoggedIn'];
+    } else {
+        header("Location: signup.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

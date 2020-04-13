@@ -13,6 +13,7 @@
         $createdUserlogin = $userlogin->createUserlogin($firstName, $lastName, $email, $emailConfirm, $password, $passwordConfirm);
 
         if ($createdUserlogin) {
+            $_SESSION['userLoggedIn'] = $email;
             header("Location: index.php");
         }
 
