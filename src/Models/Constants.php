@@ -45,4 +45,11 @@ class Constants {
              */
             public static $lastNameLengthInvalid = "Last name provided cannot be greater than 35 characters.";
 
+        // Login 
+
+            /**
+             * @var string
+             */
+            public static $loginFailed = "No account found for the email or password provided.";
+
 }

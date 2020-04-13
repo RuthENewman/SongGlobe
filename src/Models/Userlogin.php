@@ -12,7 +12,8 @@
          */
         private $errorMessages;
 
-        public function __construct($con) {
+        public function __construct($con) 
+        {
             $this->con = $con;
             $this->errorMessages = [];
         }
@@ -27,7 +28,8 @@
          * @param string $passwordConfirm
          * @return Userlogin
          */
-        public function createUserlogin($firstName, $lastName, $email, $emailConfirm, $password, $passwordConfirm) {
+        public function createUserlogin($firstName, $lastName, $email, $emailConfirm, $password, $passwordConfirm) 
+        {
             $this->validateFirstName($firstName);
             $this->validateLastName($lastName);
             $this->validateEmail($email, $emailConfirm);
@@ -42,9 +44,25 @@
         }
 
         /**
+         * Logs a user into their account
+         */
+        public function login($email, $password)
+        {
+            $password = md5($password);
+            $user = mysqli_query($this->con, "SELECT * FROM users WHERE email='$email' AND password='$password'");
+
+            if (mysqli_num_rows($user) != 1) {
+                array_push($this->errorMessages, Constants::$loginFailed);
+                return false;
+            }
+            return true;
+        }
+
+        /**
          * Returns the error message
          */
-        public function getError($error) {
+        public function getError($error) 
+        {
             if (!in_array($error, $this->errorMessages)) {
                 $error = "";
             }
@@ -58,7 +76,8 @@
          * @param string $email
          * @param string $password
          */
-        public function save($firstName, $lastName, $email, $password) {
+        public function save($firstName, $lastName, $email, $password) 
+        {
             // TODO change to bcrypt
             $passwordHash = md5($password);
             $imageUrl = "assets/images/worldglobeamericascircle128.png";
@@ -72,7 +91,8 @@
          * @param string $firstName 
          * @return
          */
-        private function validateFirstName($firstName) {
+        private function validateFirstName($firstName) 
+        {
             if (strlen($firstName) > 35) {
                 array_push($this->errorMessages, Constants::$firstNameLengthInvalid);
                 return;
@@ -84,7 +104,8 @@
          * @param string $lastName 
          * @return
          */
-        private function validateLastName($lastName) {
+        private function validateLastName($lastName) 
+        {
             if (strlen($lastName) > 35) {
                 array_push($this->errorMessages, Constants::$lastNameLengthInvalid);
             }
@@ -96,7 +117,8 @@
          * @param string $emailConfirm
          * @return
          */
-        private function validateEmail($email, $emailConfirm) {
+        private function validateEmail($email, $emailConfirm) 
+        {
             if ($email !== $emailConfirm) {
                 array_push($this->errorMessages, Constants::$emailsDoNotMatch);
                 return;
@@ -122,7 +144,8 @@
          * @param string $passwordConfirm
          * @return
          */
-        private function validatePassword($password, $passwordConfirm) {
+        private function validatePassword($password, $passwordConfirm) 
+        {
             if ($password !== $passwordConfirm) {
                 array_push($this->errorMessages, Constants::$passwordsDoNotMatch);
             }

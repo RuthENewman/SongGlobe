@@ -7,7 +7,8 @@
     include("../Handlers/SignupHandler.php");
     include("../Handlers/LoginHandler.php");
 
-    function getFormValue($input) {
+    function getFormValue($input) 
+    {
         if (isset($_POST[$input])) {
             echo htmlspecialchars($_POST[$input]);
         }
@@ -28,6 +29,7 @@
               id="login-form">
             <h2>Login</h2>
             <p><label for="login-email">Email address: </label>
+                <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$loginFailed)); ?></span>
                 <input 
                    id="login-email" 
                    name="login-email" 
