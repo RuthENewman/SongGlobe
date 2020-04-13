@@ -1,5 +1,8 @@
 <?php 
     include("../config.php");
+    
+    // session_destroy(); for manual logout
+
     if(isset($_SESSION['userLoggedIn'])) {
         $loggedInUser = $_SESSION['userLoggedIn'];
     } else {

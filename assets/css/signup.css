@@ -1,0 +1,9 @@
+#background-image {
+    background-color: #000;
+    background-image: url(../images/sheetmusicmap.png);
+    background-position: center;
+    background-size: cover;
+    display: table;
+    height: 100%;
+    width: 100%;
+}
