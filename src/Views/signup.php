@@ -23,6 +23,7 @@
     <title>Song Globe - sign up</title>
     <link rel="icon" type="image/png" href="../../assets/images/worldglobeamericasbluecircle128.png">
     <link rel="stylesheet" type="text/css" href="../../assets/css/signup.css">
+    <script src="../../assets/js/signup.js" type="text/javascript"></script> 
 </head>
 <body>
     <div id="background-image">
@@ -31,7 +32,7 @@
                 <form action="signup.php" 
                     method="POST" 
                     id="login-form">
-                    <h2>Login</h2>
+                    <h2>Song Globe</h2>
                     <p><label for="login-email">Email address: </label>
                         <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$loginFailed)); ?></span>
                         <input 
@@ -51,14 +52,17 @@
                         required >
                     </p>
                     <button type="submit" name="login-button">Log in</button>
+                    <div class="has-account--text">
+                        <span id="hide-login">Create a new account</span>
+                    </div>            
                 </form>
                 <form action="signup.php" 
                     method="POST" 
                     id="signup-form">
-                    <h2>Create an account</h2>
+                    <h2>Create a Song Globe account</h2>
                     <p>
                         <label for="signup-firstname">First name: </label>
-                        <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$firstNameLengthInvalid)); ?></p>
+                        <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$firstNameLengthInvalid)); ?></span>
                         <input 
                         id="signup-firstname" 
                         name="signup-firstname"
@@ -69,7 +73,7 @@
                     </p>
                     <p>
                         <label for="signup-lastname">Last name: </label>
-                        <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$lastNameLengthInvalid)); ?></p>
+                        <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$lastNameLengthInvalid)); ?></span>
                         <input 
                         id="signup-lastname" 
                         name="signup-lastname" 
@@ -80,8 +84,8 @@
                     </p>
                     <p>
                         <label for="signup-email">Email address: </label>
-                        <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailInvalid)); ?></p>
-                        <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailAlreadyInUse)); ?></p>
+                        <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailInvalid)); ?></span>
+                        <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailAlreadyInUse)); ?></span>
                         <input 
                         id="signup-email" 
                         name="signup-email" 
@@ -92,7 +96,7 @@
                     </p>
                     <p>
                         <label for="signup-email--confirm">Confirm email address: </label>
-                        <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailsDoNotMatch)); ?></p>
+                        <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$emailsDoNotMatch)); ?></span>
                         <input 
                         id="signup-email--confirm" 
                         name="signup-email--confirm"
@@ -103,7 +107,7 @@
                     </p>
                     <p>
                         <label for="signup-password">Password: </label>
-                        <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$passwordLengthInvalid)); ?></p>
+                        <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$passwordLengthInvalid)); ?></span>
                         <input 
                         id="signup-password" 
                         name="signup-password" 
@@ -113,7 +117,7 @@
                     </p>
                     <p>
                         <label for="signup-password--confirm">Confirm password: </label>
-                        <p class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$passwordsDoNotMatch)); ?></p>
+                        <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$passwordsDoNotMatch)); ?></span>
                         <input 
                         id="signup-password--confirm" 
                         name="signup-password--confirm" 
@@ -122,6 +126,9 @@
                         required >
                     </p>
                     <button type="submit" name="signup-button">Sign up</button>
+                    <div class="has-account--text">
+                        <span id="hide-signup">Already have an account? Log in here</span>
+                    </div>  
                 </form>
             </div>
         </div>
