@@ -24,10 +24,32 @@ body {
 }
 
 #login-container {
-    border: 1px white solid;
-    border-radius: 4%;
     margin: 0 auto;
     position: relative;
     max-width: 1024px;
     width: 80%;
+}
+
+#input-container {
+    border-right: 1px solid #999;
+    float: left;
+    padding: .3rem;
+    width: 25rem;
+}
+
+#input-container h2 {
+    color: #FFFF00;
+    text-align: center;
+}
+
+#input-container input[type="text"], 
+#input-container input[type="email"],
+#input-container input[type="password"] {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    display: block;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    width: 90%;
 }
