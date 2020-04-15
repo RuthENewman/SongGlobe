@@ -23,7 +23,7 @@
 <body>
     <?php 
         if (isset($_POST['signup-button'])) {
-            echo '<script>
+            echo "<script>
                         const ready = (callback) => {
                             if (document.readyState != 'loading') {
                                 callback();
@@ -32,10 +32,24 @@
                             }
                         }
                         const callback = () => {
-                            document.getElementById('signUpForm').style.display = 'none';
-                            document.getElementById('loginForm').style.display = 'block';
+                            document.getElementById('signup-form').style.display = 'none';
+                            document.getElementById('login-form').style.display = 'block';
                         }
-            </script>';
+            </script>";
+        } else {
+            echo "<script>
+                        const ready = (callback) => {
+                            if (document.readyState != 'loading') {
+                                callback();
+                            } else {
+                            document.addEventListener('DOMContentLoaded', fn);
+                            }
+                        }
+                        const callback = () => {
+                            document.getElementById('login-form').style.display = 'none';
+                            document.getElementById('signup-form').style.display = 'block';
+                        }
+            </script>";
         }
     ?>
     <div id="background-image">
