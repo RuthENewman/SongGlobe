@@ -20,4 +20,11 @@
             return strip_tags($password);
         }
 
+        public function getFormValue($input) 
+        {
+            if (isset($_POST[$input])) {
+                echo htmlspecialchars($_POST[$input]);
+            }
+        }
+
     }

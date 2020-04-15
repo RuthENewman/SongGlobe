@@ -1,18 +1,13 @@
 <?php 
     include("../config.php");
+
     include("../Models/Constants.php");
     include("../Models/Userlogin.php");
-
     $userlogin = new Userlogin($con);
+
     include("../Handlers/SignupHandler.php");
     include("../Handlers/LoginHandler.php");
 
-    function getFormValue($input) 
-    {
-        if (isset($_POST[$input])) {
-            echo htmlspecialchars($_POST[$input]);
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +21,23 @@
     <script src="../../assets/js/signup.js" type="text/javascript"></script> 
 </head>
 <body>
+    <?php 
+        if (isset($_POST['signup-button'])) {
+            echo '<script>
+                        const ready = (callback) => {
+                            if (document.readyState != 'loading') {
+                                callback();
+                            } else {
+                            document.addEventListener('DOMContentLoaded', fn);
+                            }
+                        }
+                        const callback = () => {
+                            document.getElementById('signUpForm').style.display = 'none';
+                            document.getElementById('loginForm').style.display = 'block';
+                        }
+            </script>';
+        }
+    ?>
     <div id="background-image">
         <div id ="login-container">
             <div id="input-container">
@@ -38,7 +50,8 @@
                         <input 
                         id="login-email" 
                         name="login-email" 
-                        value="<?php getFormValue('login-email'); ?>"
+                        value="<?php $userloginService->getFormValue('login-email'); ?>"
+                        autocomplete="email"
                         type="email" 
                         placeholder="Your email address" 
                         required ></p>
@@ -46,7 +59,9 @@
                         <label for="login-password">Password: </label>
                         <input 
                         id="login-password" 
-                        name="login-password" 
+                        name="login-password"
+                        value="<?php $userloginService->getFormValue('login-password'); ?>"
+                        autocomplete="current-password"
                         type="password" 
                         placeholder="Your password"
                         required >
@@ -66,7 +81,7 @@
                         <input 
                         id="signup-firstname" 
                         name="signup-firstname"
-                        value="<?php getFormValue('signup-firstname'); ?>"
+                        value="<?php $userloginService->getFormValue('signup-firstname'); ?>"
                         type="text" 
                         placeholder="Your first name"
                         required >
@@ -77,7 +92,7 @@
                         <input 
                         id="signup-lastname" 
                         name="signup-lastname" 
-                        value="<?php getFormValue('signup-lastname'); ?>"
+                        value="<?php $userloginService->getFormValue('signup-lastname'); ?>"
                         type="text"
                         placeholder="Your last name"
                         required >
@@ -89,8 +104,9 @@
                         <input 
                         id="signup-email" 
                         name="signup-email" 
-                        value="<?php getFormValue('signup-email'); ?>"
-                        type="email" 
+                        value="<?php $userloginService->getFormValue('signup-email'); ?>"
+                        type="email"
+                        autocomplete="email" 
                         placeholder="Your email address" 
                         required >
                     </p>
@@ -100,7 +116,8 @@
                         <input 
                         id="signup-email--confirm" 
                         name="signup-email--confirm"
-                        value="<?php getFormValue('signup-email--confirm'); ?>" 
+                        value="<?php $userloginService->getFormValue('signup-email--confirm'); ?>" 
+                        autocomplete="email"
                         type="email" 
                         placeholder="Your email address" 
                         required >
@@ -110,7 +127,9 @@
                         <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$passwordLengthInvalid)); ?></span>
                         <input 
                         id="signup-password" 
-                        name="signup-password" 
+                        name="signup-password"
+                        value="<?php $userloginService->getFormValue('signup-password'); ?>" 
+                        autocomplete="new-password"
                         type="password" 
                         placeholder="Your password"
                         required >
@@ -120,7 +139,9 @@
                         <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$passwordsDoNotMatch)); ?></span>
                         <input 
                         id="signup-password--confirm" 
-                        name="signup-password--confirm" 
+                        name="signup-password--confirm"
+                        value="<?php $userloginService->getFormValue('signup-password--confirm'); ?>" 
+                        autocomplete="new-password"
                         type="password" 
                         placeholder="Your password"
                         required >
