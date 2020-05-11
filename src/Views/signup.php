@@ -24,28 +24,28 @@
     <?php 
         if (isset($_POST['signup-button'])) {
             echo "<script>
-                        const ready = (callback) => {
+                        const ready = (callbackFn) => {
                             if (document.readyState != 'loading') {
-                                callback();
+                                callbackFn();
                             } else {
                             document.addEventListener('DOMContentLoaded', fn);
                             }
                         }
-                        const callback = () => {
+                        const callbackFn = () => {
                             document.getElementById('signup-form').style.display = 'none';
                             document.getElementById('login-form').style.display = 'block';
                         }
             </script>";
         } else {
             echo "<script>
-                        const ready = (callback) => {
+                        const ready = (fn) => {
                             if (document.readyState != 'loading') {
-                                callback();
+                                fn();
                             } else {
                             document.addEventListener('DOMContentLoaded', fn);
                             }
                         }
-                        const callback = () => {
+                        const fn = () => {
                             document.getElementById('login-form').style.display = 'none';
                             document.getElementById('signup-form').style.display = 'block';
                         }
@@ -58,7 +58,7 @@
                 <form action="signup.php" 
                     method="POST" 
                     id="login-form">
-                    <h2>Song Globe</h2>
+                    <h1>Song Globe</h1>
                     <p><label for="login-email">Email address: </label>
                         <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$loginFailed)); ?></span>
                         <input 
@@ -88,7 +88,7 @@
                 <form action="signup.php" 
                     method="POST" 
                     id="signup-form">
-                    <h2>Create a Song Globe account</h2>
+                    <h1>Create a Song Globe account</h1>
                     <p>
                         <label for="signup-firstname">First name: </label>
                         <span class="error-message"><?php echo htmlspecialchars($userlogin->getError(Constants::$firstNameLengthInvalid)); ?></span>

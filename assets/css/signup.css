@@ -19,8 +19,12 @@ body {
     box-sizing: border-box;
     color: #fff;
     font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+    font-size: 1.3rem;
     font-weight: 400;
     line-height: 1rem;
+    background-color: #000066;
+    margin-top: 1.5rem;
+    padding-bottom: .5rem;
 }
 
 #login-container {
@@ -37,69 +41,79 @@ body {
     width: 25rem;
 }
 
-#input-container h2 {
-    color: #FFFF00;
+#input-container h1 {
+    color: #FFF;
     text-align: center;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
 }
 
 #input-container input[type="text"], 
 #input-container input[type="email"],
 #input-container input[type="password"] {
-    background-color: transparent;
     border: 0;
     border-bottom: 1px solid #fff;
     display: block;
     height: 1.7rem;
     line-height: 2rem;
+    margin-left: 1rem;
     width: 90%;
+    margin-top: .5rem;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #fff;
-    font-size: .8rem;
+    font-size: 1rem;
+    margin-left: 1rem;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
    color: #fff;
    opacity:  1;
-   font-size: .8rem;
+   font-size: 1rem;
+   margin-left: 1rem;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
    color: #fff;
    opacity:  1;
-   font-size: .8rem;
+   font-size: 1rem;
+   margin-left: 1rem;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color: #fff;
-   font-size: .8rem;
+   font-size: 1rem;
+   margin-left: 1rem;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
    color: #fff;
-   font-size: .8rem;
+   font-size: 1rem;
+   margin-left: 1rem;
 }
 
-::placeholder { /* Most modern browsers support this now. */
+::placeholder { 
   color: #fff;
-  font-size: .8rem;
+  font-size: 1rem;
+  margin-left: 1rem;
 }
 
 #input-container label {
-    color: #FFFF00;
-    font-size: .8rem;
-    margin-top: 15px;
+    color: #FFF;
+    font-size: 1.3rem;
+    margin-top: .9rem;
+    margin-left: 1rem;
 }
 
 #input-container button {
-    background-color: transparent;
+    background-color: #000066;
     border: 2px solid #fff;
     border-radius: 125rem;
     color: #fff;
     display: block;
-    font-size: 1rem;
-    height: 2.2rem;
+    font-size: 1.2rem;
+    height: 3rem;
     letter-spacing: .05rem;
     margin: 1rem auto;
     text-transform: uppercase;
-    width: 100%;
+    width: 90%;
 }
 
 #input-container button:hover,
@@ -114,18 +128,14 @@ body {
 
 .has-account--text span {
     font-weight: bold;
-    font-size: .85rem;
+    font-size: 1rem;
 }
 
 #signup-form {
     display: none;
 }
 
-
-/* 
 #input-container .error-message {
-    background-color: red;
-    color: #fff;
     font-size: .8rem;
     padding: 4px;
-} */
+}
