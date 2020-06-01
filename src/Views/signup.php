@@ -166,6 +166,15 @@
                     </div>  
                 </form>
             </div>
+            <div id="login-text">
+                <h1>Discover songs from around the globe</h1>
+                <h2>Travel the world through listening to great music</h2>
+                <ul>
+                    <li>Explore familiar and different cultures</li>
+                    <li>Create playlists of songs by country and region</li>
+                    <li>Find artists you'll love</li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

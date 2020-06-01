@@ -23,7 +23,6 @@ body {
     font-weight: 400;
     line-height: 1rem;
     background-color: #000066;
-    margin-top: 1.5rem;
     padding-bottom: .5rem;
 }
 
@@ -138,4 +137,35 @@ body {
 #input-container .error-message {
     font-size: .8rem;
     padding: 4px;
+}
+
+#login-text {
+    background-color: transparent;
+    display: table-cell;
+    padding: 2.5rem;
+}
+
+#login-text * {
+    background-color: transparent;
+}
+
+#login-text h1 {
+    color: #07d159;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 2.2rem;
+}
+
+#login-text h2 {
+    margin: 2rem 0;
+}
+
+#login-text ul {
+    padding: 0;
+}
+
+#login-text li {
+    font-size: 1.2rem;
+    list-style-type: none;
+    padding: .6rem;
 }
